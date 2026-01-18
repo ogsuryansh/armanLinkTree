@@ -396,6 +396,79 @@
                 transform: translateY(0);
             }
         }
+
+        /* Promoted Section */
+        .promoted-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #3E2723;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+            margin-left: 4px;
+            opacity: 0.7;
+        }
+
+        .promoted-card {
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .promoted-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .promoted-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #EFDCD6;
+            display: block;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .promoted-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .promoted-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: #3E2723;
+        }
+
+        .promoted-desc {
+            font-size: 14px;
+            opacity: 0.7;
+            font-weight: 500;
+            color: #D37657;
+            /* Accent color for handle */
+        }
     </style>
 </head>
 
@@ -415,6 +488,59 @@
             <p>At Charleston Fams, we focus on real, organic Instagram growth.</p>
             <p>No bots. No mass-following. No risky methods.</p>
             <p>Our strategies are algorithm-friendly and designed for long-term success.</p>
+        </div>
+
+        <!-- Promoted Profiles Section -->
+        <div class="promoted-section">
+            <h3 class="section-label">Featured Instagram Promotions</h3>
+
+            <a href="https://www.instagram.com/stinebow/" class="promoted-card">
+                <img src="CHRISTINE.png" alt="Christine Bowman" class="promoted-avatar" style="object-fit: cover;">
+                <div class="promoted-info">
+                    <span class="promoted-name">CHRISTINE BOWMAN</span>
+                    <span class="promoted-desc">@stinebow</span>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/mrjamaalk/" class="promoted-card">
+                <img src="JJ.png" alt="JJ" class="promoted-avatar" style="object-fit: cover;">
+                <div class="promoted-info">
+                    <span class="promoted-name">JJ</span>
+                    <span class="promoted-desc">@mrjamaalk</span>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/your__islandgirl/" class="promoted-card">
+                <img src="ARLEEN.png" alt="Arleen B" class="promoted-avatar" style="object-fit: cover;">
+                <div class="promoted-info">
+                    <span class="promoted-name">ARLEEN B</span>
+                    <span class="promoted-desc">@your__islandgirl</span>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/heiner_lienhard/" class="promoted-card">
+                <img src="HEINER.png" alt="Heiner Lienhard" class="promoted-avatar" style="object-fit: cover;">
+                <div class="promoted-info">
+                    <span class="promoted-name">HEINER LIENHARD</span>
+                    <span class="promoted-desc">@heiner_lienhard</span>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/charlotteswinebar/" class="promoted-card">
+                <img src="WINE.png" alt="Wine Bar & Tapas" class="promoted-avatar" style="object-fit: cover;">
+                <div class="promoted-info">
+                    <span class="promoted-name">WINE BAR & TAPAS</span>
+                    <span class="promoted-desc">@charlotteswinebar</span>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/van.tuxx/" class="promoted-card">
+                <img src="VIVIANE.png" alt="Viviane Patricia" class="promoted-avatar" style="object-fit: cover;">
+                <div class="promoted-info">
+                    <span class="promoted-name">VIVIANE PATRICIA</span>
+                    <span class="promoted-desc">@van.tuxx</span>
+                </div>
+            </a>
         </div>
 
         <!-- Social Icons -->
@@ -443,32 +569,7 @@
             </a>
         </div>
 
-        <!-- Links Section -->
-        <div class="card-container">
-            <!-- Card 1 -->
-            <a href="https://www.instagram.com/charleston.fams?igsh=MWM5aHRobW5sMmc3bA==" class="link-card">
-                <div class="card-image-wrapper">
-                    <img src="bear_family_wide.png" alt="Bear Family Illustration" class="card-image">
-                    <div class="card-overlay-text">Charlestonfams</div>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">Instagram</span>
-                    <div class="card-options">⋮</div>
-                </div>
-            </a>
-
-            <!-- Card 2 -->
-            <a href="https://www.threads.com/@charleston.fams?igshid=NTc4MTIwNjQ2YQ==" class="link-card">
-                <div class="card-image-wrapper">
-                    <img src="bear_family_wide.png" alt="Bear Family Illustration" class="card-image">
-                    <div class="card-overlay-text">Charlestonfams</div>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">Threads</span>
-                    <div class="card-options">⋮</div>
-                </div>
-            </a>
-        </div>
+        <!-- Links Section (Moved to Bottom) -->
 
         <!-- Guides Section -->
         <div class="gallery-section">
@@ -594,6 +695,33 @@
                     organically every day. The boost didn't just give us numbers; it gave us momentum that is still
                     going strong. So grateful!"</p>
             </div>
+        </div>
+
+        <!-- Links Section (Bear Images) -->
+        <div class="card-container" style="margin-top: 20px;">
+            <!-- Card 1 -->
+            <a href="https://www.instagram.com/charleston.fams?igsh=MWM5aHRobW5sMmc3bA==" class="link-card">
+                <div class="card-image-wrapper">
+                    <img src="bear_family_wide.png" alt="Bear Family Illustration" class="card-image">
+                    <div class="card-overlay-text">Charlestonfams</div>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Instagram</span>
+                    <div class="card-options">⋮</div>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="https://www.threads.com/@charleston.fams?igshid=NTc4MTIwNjQ2YQ==" class="link-card">
+                <div class="card-image-wrapper">
+                    <img src="bear_family_wide.png" alt="Bear Family Illustration" class="card-image">
+                    <div class="card-overlay-text">Charlestonfams</div>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Threads</span>
+                    <div class="card-options">⋮</div>
+                </div>
+            </a>
         </div>
     </div>
 
