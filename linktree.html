@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PennsylvaniaFam - Linktree</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #EFDCD6;
+            --text-color: #2F1F1E;
+            --card-bg: #FAEBD7;
+            /* AntiqueWhite approximation */
+            --card-text: #2c1a1d;
+            --hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 60px;
+            /* Space for footer */
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 16px;
+            /* Placeholder icon style */
+            border: 2px solid rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.4;
+            opacity: 0.9;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin: 10px 0 20px;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* Link Cards */
+        .card-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-card {
+            background-color: var(--card-bg);
+            border-radius: 30px;
+            /* Highly rounded corners */
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            padding-bottom: 12px;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .card-image-wrapper {
+            width: 100%;
+            aspect-ratio: 16/9;
+            /* Revert to wide aspect ratio */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--card-bg);
+            position: relative;
+        }
+
+        .card-overlay-text {
+            position: absolute;
+            top: 25%;
+            /* Adjusted for wider image */
+            width: 100%;
+            text-align: center;
+            font-family: 'Brush Script MT', 'Cursive', cursive;
+            font-size: 32px;
+            color: #3E2723;
+            transform: rotate(-5deg);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Back to cover, now safe with wide image */
+            display: block;
+        }
+
+        .card-content {
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Centered text */
+            position: relative;
+        }
+
+        .card-title {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .card-options {
+            position: absolute;
+            right: 20px;
+            opacity: 0.5;
+        }
+
+        /* Footer Pill */
+        .footer-pill {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(45, 30, 30, 0.85);
+            /* Dark background */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            text-decoration: none;
+        }
+
+        /* Info Banner */
+        .info-banner {
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 16px;
+            padding: 16px;
+            margin: 10px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .info-banner h2 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #3E2723;
+        }
+
+        .info-banner p {
+            font-size: 14px;
+            line-height: 1.5;
+            opacity: 0.9;
+            margin-bottom: 4px;
+            max-width: 100%;
+            /* Override default max-width */
+        }
+
+        .info-banner p:last-child {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            width: 100%;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .reviews-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        .review-card {
+            background-color: rgba(255, 255, 255, 0.4);
+            padding: 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .review-name {
+            font-weight: 700;
+            color: #3E2723;
+        }
+
+        .review-stars {
+            color: #D37657;
+            font-size: 14px;
+        }
+
+        .review-text {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Profile Header -->
+        <header>
+            <div class="logo-placeholder">✱</div>
+            <h1>CHARLESTONFAMS</h1>
+            <p>Experience Charleston with us! 🌟 DM to get featured 📥</p>
+        </header>
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <h2>🚀 How Charleston Fams Helps You Grow on Instagram</h2>
+            <p>At Charleston Fams, we focus on real, organic Instagram growth.</p>
+            <p>No bots. No mass-following. No risky methods.</p>
+            <p>Our strategies are algorithm-friendly and designed for long-term success.</p>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/charleston.fams?igsh=MWM5aHRobW5sMmc3bA==" class="social-icon"
+                aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Threads">
+                <!-- Simple approximate Threads logo -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z">
+                    </path>
+                    <path d="M16.5 12a4.5 4.5 0 0 1-5 4.2c-2.3 0-3.5-1.5-3.5-3.2s1.3-3.8 4-3.8c1.5 0 2.8.5 2.8.5">
+                    </path>
+                    <path d="M16.5 12V8.5"></path>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Links Section -->
+        <div class="card-container">
+            <!-- Card 1 -->
+            <a href="https://www.instagram.com/charleston.fams?igsh=MWM5aHRobW5sMmc3bA==" class="link-card">
+                <div class="card-image-wrapper">
+                    <img src="bear_family_wide.png" alt="Bear Family Illustration" class="card-image">
+                    <div class="card-overlay-text">Charlestonfams</div>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Instagram</span>
+                    <div class="card-options">⋮</div>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="#" class="link-card">
+                <div class="card-image-wrapper">
+                    <img src="bear_family_wide.png" alt="Bear Family Illustration" class="card-image">
+                    <div class="card-overlay-text">Charlestonfams</div>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Threads</span>
+                    <div class="card-options">⋮</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="reviews-section">
+            <h2 class="reviews-title">What People Say</h2>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-name">Jessica Miller</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">"I can't thank Charlestonfams enough for the incredible turnaround on my business
+                    profile. We were stuck for months, but after their promotion, the organic growth just hasn't
+                    stopped. It wasn't just a one-time spike; the engagement gave us the momentum we needed to keep
+                    growing naturally. Truly the best investment for my brand!"</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-name">Michael Stevens</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">"I was skeptical about using a promotion service, thinking it might be fake, but
+                    I was completely wrong. The followers are genuine, and even weeks after the campaign, my reach is
+                    still climbing. This service gave me the credibility boost I needed to start attracting real
+                    clients. 100% genuine results that actually stick."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-name">Sarah Jenkins</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">"Thank you so much! My blog saw such a massive jump in engagement that I'm
+                    finally landing collaborations. What surprised me most is that the growth didn't drop off; it
+                    kickstarted a wave of new, organic followers. It feels like my account is finally visible to the
+                    right audience thanks to your amazing boost."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-name">David Thompson</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">"I've tried so many panels that delivered nothing but drops, but this experience
+                    was different. The delivery was fast, but more importantly, the new community members are active.
+                    It’s like the algorithm finally loves me again! If you're looking for real, sustainable growth, this
+                    is the only service you need."</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-name">Emily Wilson</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">"My small business page was practically invisible before I found Charleston. The
+                    initial promotion provided a foundation of credibility, and now we see real customers finding us
+                    organically every day. The boost didn't just give us numbers; it gave us momentum that is still
+                    going strong. So grateful!"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <a href="#" class="footer-pill">
+        linktr.ee <span style="opacity: 0.6; font-weight: normal;">— Private</span>
+    </a>
+
+</body>
+
+</html>
