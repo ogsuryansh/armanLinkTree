@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "/linktree.html"
+  status = 200
